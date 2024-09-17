@@ -6,8 +6,21 @@ function main() {
     var operator = (0, readline_sync_1.question)("Enter operator:\n");
     var secondStr = (0, readline_sync_1.question)("Enter second number:\n");
     //Need to convert the strings into numbers for JavaScript, as otherwise a string '22' + '11' will be 2211. isNumber function created.
-    var firstNum = isNumber(firstStr);
-    console.log(firstNum);
+    var op = isOperator(operator);
+    console.log(op);
+}
+function isOperator(operator) {
+    //Is this or is this not an operator.
+    switch (operator) {
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+            return true;
+        default:
+            return false;
+    }
+    //Same as if you wrote return operator === '+' || '-' || '*' || '/';
 }
 function isNumber(str) {
     //Returns a boolean as we want to know if the string is a number, true or false.
