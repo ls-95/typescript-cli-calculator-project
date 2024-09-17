@@ -6,8 +6,31 @@ function main() {
     var operator = (0, readline_sync_1.question)("Enter operator:\n");
     var secondStr = (0, readline_sync_1.question)("Enter second number:\n");
     //Need to convert the strings into numbers for JavaScript, as otherwise a string '22' + '11' will be 2211. isNumber function created.
-    var op = isOperator(operator);
-    console.log(op);
+    var validInput = isNumber(firstStr) && isOperator(operator) && isNumber(secondStr);
+    // console.log(validInput); CHECK IS IT WORKS
+    if (validInput) {
+        var firstNum = parseInt(firstStr);
+        var secondNum = parseInt(secondStr);
+        var result = calculate(firstNum, operator, secondNum); // as Operator as we know it will be one of the 4 operators indicated in the type.
+        console.log(result);
+    }
+    else {
+        console.log("\ninvalid input\n");
+        main();
+    }
+}
+function calculate(firstNum, operator, secondNum) {
+    //A swtich statement normally needs a default value but not in this case there are ONLY 4 values that are specified with Operator.
+    switch (operator) {
+        case "+":
+            return firstNum + secondNum;
+        case "-":
+            return firstNum - secondNum;
+        case "*":
+            return firstNum * secondNum;
+        case "/":
+            return firstNum / secondNum;
+    }
 }
 function isOperator(operator) {
     //Is this or is this not an operator.
